@@ -18,9 +18,11 @@ ROOT_FILES = (
     "README.md", "RELEASE_NOTES.md", "CHANGELOG.md", "LICENSE", "SECURITY.md",
     ".gitignore", "server.py", "configure_key.py", "generate_config.py",
     "diagnose.py", "probe_chat.py", "build_release.py", ".github/workflows/tests.yml",
+    "install_hydroglm_dsh.py", "verify_hydroglm_dsh.py",
     "package.json", "package-lock.json",
 )
 PATTERNS = ("docs/*.md", "examples/*.json", "examples/*.toml", "tests/test_*.py",
+            "skills/hydroglm-consult/*.md", "skills/hydroglm-consult/references/*.md",
             "bin/*.cjs", "scripts/*.cjs", "tests/*.test.cjs")
 LONG_KEY = re.compile(rb"\bsk-[A-Za-z0-9_-]{32,}\b")
 LINK = re.compile(r"(?<!!)\[[^\]\n]*\]\(([^)\n]+)\)")

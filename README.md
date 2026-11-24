@@ -6,14 +6,14 @@ npm 包名：`hydroglm-mcp-bridge` · 版本：`1.0.1` · npm 入口需要 Node.
 
 **Connect HydroGLM to your AI assistant through MCP.**
 
-HydroGLM MCP Bridge 将 **HydroGLM / HydroGLM-plus** 封装为 MCP 工具，让 Codex、WorkBuddy、Claude Desktop 等支持本地 MCP 的 AI 客户端，在处理水文、水资源、水库调度及水电任务时调用专业大模型。
+HydroGLM MCP Bridge 将 **HydroGLM / HydroGLM-plus** 封装为 MCP 工具，让 DeepSeek Harness、Codex、WorkBuddy、Claude Desktop 等支持本地 MCP 的 AI 客户端，在处理水文、水资源、水库调度及水电任务时调用专业大模型。
 
 > **工作方式：**客户端通过 `ask_hydroglm` 获取 HydroGLM 的专业建议，再由客户端自身的工具读取文件、运行 Python 或生成成果。HydroGLM API 不会直接操作本地文件。
 
 ## Features
 
 - **专业模型调用**：通过 `ask_hydroglm` 咨询 HydroGLM 或 HydroGLM-plus。
-- **多客户端接入**：提供 Codex、WorkBuddy、Claude Desktop 及通用 stdio MCP 配置示例。
+- **多客户端接入**：提供 DeepSeek Harness 一键安装，以及 Codex、WorkBuddy、Claude Desktop 和通用 stdio MCP 配置示例。
 - **按任务选用**：工具描述包含水利专业任务的选用提示；是否自动调用取决于宿主客户端。
 - **轻量部署**：仅需 Python 3.10+，无需额外安装 Python 依赖。
 - **独立密钥管理**：支持一次性保存模型 API Key，不必在 MCP 配置中明文填写。
@@ -85,6 +85,15 @@ python3 configure_key.py --agent HydroGLM-plus
 
 ### 3. Install in Your MCP Client
 
+**DeepSeek Harness**
+
+```bash
+python3 install_hydroglm_dsh.py
+python3 verify_hydroglm_dsh.py
+```
+
+默认配置桌面版的 `desktop` profile。Web 版在两条命令末尾加 `--profile web`。安装会注册 MCP 并安装咨询技能，具体步骤及直接聊天模型接入见 [DeepSeek Harness 接入指南](docs/DeepSeek-Harness.md)。
+
 按使用的客户端生成配置片段：
 
 **Codex**
@@ -109,8 +118,9 @@ python3 generate_config.py --client claude --output local.claude.mcp.json
 
 | Client | Setup Guide |
 | --- | --- |
+| DeepSeek Harness | [接入与验证](docs/DeepSeek-Harness.md) |
 | Codex | [docs/Codex.md](docs/Codex.md) |
-| WorkBuddy | [docs/WorkBuddy.md](docs/WorkBuddy.md) |
+| WorkBuddy | [MCP 配置示例](examples/workbuddy.mcp.json) |
 | Claude Desktop | [docs/Claude-Desktop.md](docs/Claude-Desktop.md) |
 | 其他 stdio 客户端 | [examples/generic.mcp.json](examples/generic.mcp.json) |
 
@@ -118,7 +128,7 @@ python3 generate_config.py --client claude --output local.claude.mcp.json
 
 ## Usage｜使用示例
 
-安装并启用后，确认客户端工具列表中出现 **`hydroglm_bridge` → `ask_hydroglm`**，即可直接提问：
+安装并启用后，确认客户端工具列表中出现 **`ask_hydroglm`**（DSH 中为 `mcp__hydroglm__ask_hydroglm`），即可直接提问：
 
 > 水库汛限水位有什么作用？
 
@@ -162,7 +172,7 @@ Codex、WorkBuddy 等客户端可以根据任务内容选择 `ask_hydroglm`，�
 ```text
 用户提出水利专业任务
         ↓
-Codex / WorkBuddy / Claude Desktop 等宿主智能体
+DeepSeek Harness / Codex / WorkBuddy / Claude Desktop 等宿主智能体
         ↓  选择调用 ask_hydroglm
 HydroGLM MCP Bridge（本地 stdio）
         ↓  HTTPS 请求

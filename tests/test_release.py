@@ -49,6 +49,8 @@ class ReleaseTests(unittest.TestCase):
                 self.assertIsNone(archive.testzip())
                 names = archive.namelist()
                 self.assertIn("HydroGLM-MCP-Bridge/docs/MCP原理与调用场景.md", names)
+                self.assertIn("HydroGLM-MCP-Bridge/install_hydroglm_dsh.py", names)
+                self.assertIn("HydroGLM-MCP-Bridge/skills/hydroglm-consult/SKILL.md", names)
                 self.assertIn("HydroGLM-MCP-Bridge/tests/test_credentials.py", names)
                 for name in names:
                     self.assertFalse(Path(name).name.startswith("local."))
