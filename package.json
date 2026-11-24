@@ -25,13 +25,16 @@
     "generate_config.py",
     "diagnose.py",
     "probe_chat.py",
+    "install_hydroglm_dsh.py",
+    "verify_hydroglm_dsh.py",
     "README.md",
     "CHANGELOG.md",
     "RELEASE_NOTES.md",
     "SECURITY.md",
     "LICENSE",
     "docs/",
-    "examples/"
+    "examples/",
+    "skills/"
   ],
   "scripts": {
     "test": "node --test tests/cli.test.cjs && node scripts/run-python-tests.cjs",
