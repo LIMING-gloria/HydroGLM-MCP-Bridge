@@ -21,7 +21,8 @@ ROOT_FILES = (
     "package.json", "package-lock.json",
 )
 PATTERNS = ("docs/*.md", "examples/*.json", "examples/*.toml", "tests/test_*.py",
-            "bin/*.cjs", "scripts/*.cjs", "tests/*.test.cjs")
+            "bin/*.cjs", "scripts/*.cjs", "tests/*.test.cjs", "agent-setup/*.md",
+            "agent-setup/*.json")
 LONG_KEY = re.compile(rb"\bsk-[A-Za-z0-9_-]{32,}\b")
 LINK = re.compile(r"(?<!!)\[[^\]\n]*\]\(([^)\n]+)\)")
 

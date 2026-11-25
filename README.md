@@ -10,6 +10,16 @@ HydroGLM MCP Bridge 将 **HydroGLM / HydroGLM-plus** 封装为 MCP 工具，让 
 
 > **工作方式：**客户端通过 `ask_hydroglm` 获取 HydroGLM 的专业建议，再由客户端自身的工具读取文件、运行 Python 或生成成果。HydroGLM API 不会直接操作本地文件。
 
+## 一句话安装｜Agent Setup
+
+把下面这句话发给支持本地 stdio MCP 的 AI 助手，例如 Codex：
+
+```text
+Fetch and execute the appropriate instructions to set me up for HydroGLM MCP Bridge from https://raw.githubusercontent.com/LIMING-gloria/HydroGLM-MCP-Bridge/main/agent-setup/prompt.md
+```
+
+助手会按清单校验安装文件、配置当前客户端，并检查 `ask_hydroglm` 是否可用。本机需要 Python 3.10+。如果尚未配置瀚海 API Key，请按助手提示在你自己的终端输入密钥。 [查看安装说明](agent-setup/prompt.md)
+
 ## Features
 
 - **专业模型调用**：通过 `ask_hydroglm` 咨询 HydroGLM 或 HydroGLM-plus。
@@ -20,7 +30,7 @@ HydroGLM MCP Bridge 将 **HydroGLM / HydroGLM-plus** 封装为 MCP 工具，让 
 
 ## npm / npx 使用
 
-先安装 Node.js 22+ 和 Python 3.10+。npm 包提供启动入口并保留原 Python 服务，不会自动安装 Python。以下命令在包发布到 npm 后可用。
+先安装 Node.js 22+ 和 Python 3.10+。npm 包提供启动入口并保留原 Python 服务。
 
 ### 1. 保存密钥，只需一次
 
@@ -110,7 +120,7 @@ python3 generate_config.py --client claude --output local.claude.mcp.json
 | Client | Setup Guide |
 | --- | --- |
 | Codex | [docs/Codex.md](docs/Codex.md) |
-| WorkBuddy | [docs/WorkBuddy.md](docs/WorkBuddy.md) |
+| WorkBuddy | [MCP 配置示例](examples/workbuddy.mcp.json) |
 | Claude Desktop | [docs/Claude-Desktop.md](docs/Claude-Desktop.md) |
 | 其他 stdio 客户端 | [examples/generic.mcp.json](examples/generic.mcp.json) |
 

@@ -32,6 +32,10 @@ python3 build_release.py --output-dir release-output
 
 打包脚本只收集明确列出的源码、文档、示例和测试文件，检查本机项目路径、疑似长密钥和文档本地链接。它不读取个人凭据目录，不包含 `local.*`、缓存或个人客户端设置。构建脚本的检查用于辅助发布整理，不替代对将要公开文件的实际审阅。
 
+## 更新一句话安装入口
+
+README 中的安装提示词使用固定的 [入口文件](../agent-setup/prompt.md)。发布新版安装文件时，先把通过测试的源码提交推送到 GitHub，再更新 [安装清单](../agent-setup/manifest.json) 的版本和完整提交 SHA。对清单中的每份文件，从该提交的 GitHub Raw URL 重新下载，按实际字节更新 `sizeBytes` 和 `sha256`，并将 URL 指向同一个提交。确认从入口下载并校验全部文件后，再合入清单。
+
 ## 创建新仓库并上传
 
 在 GitHub 网页新建空仓库 `HydroGLM-MCP-Bridge`，然后在本目录运行以下命令。将远程 URL 中的账号替换成自己的账号：

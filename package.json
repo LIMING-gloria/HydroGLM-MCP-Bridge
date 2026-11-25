@@ -30,6 +30,7 @@
     "RELEASE_NOTES.md",
     "SECURITY.md",
     "LICENSE",
+    "agent-setup/",
     "docs/",
     "examples/"
   ],
